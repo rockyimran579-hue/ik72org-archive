@@ -1,0 +1,15 @@
+name: Auto Archive Website
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # Runs daily at 00:00 UTC
+  workflow_dispatch:       # Allows manual run
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Archive ik72org.wordpress.com
+      run: |
+        curl "https://web.archive.org/save/https://ik72org.wordpress.com" -s
