@@ -1,0 +1,14 @@
+name: Auto-Archive Website to Wayback
+
+on:
+  schedule:
+    - cron: "0 0 * * *"      # daily at 00:00 UTC  → you can adjust time
+  workflow_dispatch:        # also allow manual run
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Wayback Machine snapshot
+        run: |
+          curl -X GET "https://web.archive.org/save/https://ik72org.wordpress.com/"
